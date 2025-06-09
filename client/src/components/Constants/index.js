@@ -295,4 +295,4 @@ const games = [
 
 
 
-export { services, technologies, experiences, testimonials, projects, knowledgeSnippets, games };
+export { technologies, projects, knowledgeSnippets, games };
