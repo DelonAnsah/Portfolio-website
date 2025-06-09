@@ -38,7 +38,7 @@ const Contact = () => {
     setButtonText('Sending...');
 
     try {
-      const response = await fetch('http://localhost:5000/contact', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE}/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',

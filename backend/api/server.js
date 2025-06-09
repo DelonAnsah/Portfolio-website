@@ -9,6 +9,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const port = process.env.PORT || 5000;
+
 const corsOptions = {
 origin: ['http://localhost:5173', 'https://delon-portfolio-website.vercel.app'],
   methods: 'GET, POST',
@@ -69,6 +71,6 @@ const mail = {
 
 app.use("/", router);
 
-app.listen(5000, () => {
-  console.log('server running on port 5000');
-})
+app.listen(port, () => {
+  console.log(`Backend server is running on http://localhost:${port}`);
+});
