@@ -69,7 +69,7 @@ const AboutMe = () => {
               </a>
               <a
                 download=""
-                href="/Delon-cv.pdf"
+                href="/Delon-Cv.pdf"
                 className="flex items-center gap-2 bg-[#915EFF] text-white px-4 py-2 rounded hover:bg-[#7b4fd6] transition"
               >
                 <FaFileDownload />
