@@ -5,7 +5,7 @@ import { fadeIn, slideIn, textVariant } from '../Utils/motion';
 import image from '../assets/Delon.png'
 import { FaBriefcase, FaFileDownload, FaGithub, FaGlobe, FaLinkedinIn, FaMapMarkedAlt, FaTwitter } from 'react-icons/fa'
 import { styles } from '../styles';
-import CV from '../assets/Delon-cv.pdf'
+
 
 
 const AboutMe = () => {
@@ -69,7 +69,7 @@ const AboutMe = () => {
               </a>
               <a
                 download=""
-                href={CV}
+                href="/Delon-cv.pdf"
                 className="flex items-center gap-2 bg-[#915EFF] text-white px-4 py-2 rounded hover:bg-[#7b4fd6] transition"
               >
                 <FaFileDownload />
