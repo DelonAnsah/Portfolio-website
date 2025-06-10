@@ -13,10 +13,11 @@ const Navbar = () => {
     <header className="bg-gray-900 text-white p-2 sm:px-11 md:px-12 md:p-4 sticky top-0 z-10">
       <div className="mx-auto max-w-[84rem] flex justify-between items-center">
         <nav className="flex items-center">
+          {/* Logo */}
           <NavLink
             to="/"
             className="inline-flex items-center py-6 px-3 mr-4 text-white text-2xl md:text-4xl font-bold cursive tracking-widest hover:text-blue-400 transition-colors duration-300 ease-in-out"
-            style={{ fontFamily: 'Poppins, cursive' }}
+            style={{ fontFamily: '"Playfair Display", Poppins, cursive' }}
             onClick={() => {
               window.scrollTo(0, 0);
               closeMenu();
