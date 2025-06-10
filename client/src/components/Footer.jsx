@@ -14,7 +14,9 @@ const Footer = () => {
       <div className='mx-auto max-w-[82rem]'>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12" >
           <div>
-            <h3 className="text-xl font-bold mb-4 tracking-widest" style={{ fontFamily: '"Playfair Display", Poppins, cursive' }}
+            <h3 className="text-xl font-bold mb-4 tracking-widest" style={{
+              fontFamily: window.innerWidth < 768 ? '"Playfair Display", serif' : '"Poppins", cursive',
+            }}
             >Delon</h3>
             <p className="text-gray-400 mb-4">
               Frontend Engineer blending design and code to build fast, scalable, and data-driven digital experiences.

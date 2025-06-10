@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
 import { styles } from '../styles'
 import { ComputersCanvas } from './canvas'
@@ -6,15 +6,9 @@ import { ComputersCanvas } from './canvas'
 
 
 const Hero = () => {
-    const [showFallback, setShowFallback] = useState(false)
-    
   return (
-    <section className={`relative w-full h-[400px] md:h-[500px] lg:h-[600px] xl:h-[650px] 2xl:h-[800px] mx-auto `}>
-       {/* Fallback background image that shows when 3D model fails or on specific devices */}
-      {showFallback && (
-        <div className="absolute inset-0 w-full h-full bg-[url('/Fallback.png')] bg-cover bg-center z-0" />
-      )}
-      <div className={`absolute inset-0 top-[50px]  md:top-[60px]  max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5  z-8`}>
+    <section className={`relative w-full h-[400px] md:h-[500px] lg:h-[600px] xl:h-[650px] 2xl:h-[800px] mx-auto`}>
+      <div className={`absolute inset-0 top-[50px]  md:top-[60px]  max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}>
         <div className='flex flex-col justify-center items-center mt-5'>
           <div className='w-5 h-5 rounded-full bg-[#915EFF]' />
           <div className='w-1 sm:h-80 h-40 violet-gradient' />
@@ -31,7 +25,7 @@ const Hero = () => {
         </div>
       </div>
        
-      <ComputersCanvas onError={() => setShowFallback(true)} />
+      <ComputersCanvas />
 
     </section>
   )

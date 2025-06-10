@@ -16,16 +16,17 @@ const Navbar = () => {
           {/* Logo */}
           <NavLink
             to="/"
-            className="inline-flex items-center py-6 px-3 mr-4 text-white text-2xl md:text-4xl font-bold cursive tracking-widest hover:text-blue-400 transition-colors duration-300 ease-in-out"
-            style={{ fontFamily: '"Playfair Display", Poppins, cursive' }}
+            className="inline-flex items-center py-6 px-3 mr-4 text-white text-2xl md:text-4xl font-bold tracking-widest hover:text-blue-400 transition-colors duration-300 ease-in-out"
             onClick={() => {
               window.scrollTo(0, 0);
               closeMenu();
             }}
+            style={{
+              fontFamily: window.innerWidth < 768 ? '"Playfair Display", serif' : '"Poppins", cursive',
+            }}
           >
             Delon
           </NavLink>
-
           {/* Desktop Links */}
           <div className="hidden md:flex items-center">
             <NavLink
@@ -38,7 +39,7 @@ const Navbar = () => {
                 }`
               }
             >
-             Home
+              Home
             </NavLink>
             <NavLink
               to="/project"
