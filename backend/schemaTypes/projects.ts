@@ -1,6 +1,6 @@
 export default {
   name: 'project',
-  title: 'project',
+  title: 'Project',
   type: 'document',
   fields: [
     {
@@ -42,9 +42,15 @@ export default {
       name: 'mainImage',
       title: 'Main Image',
       type: 'image',
-      Options: {
-        hotspot:true,
+      options: {
+        hotspot: true,
       },
+    },
+    {
+      name: 'priority',
+      title: 'Priority',
+      type: 'number',
+      description: 'Higher numbers indicate higher priority',
     },
   ],
 };

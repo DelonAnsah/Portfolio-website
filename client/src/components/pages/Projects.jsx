@@ -93,7 +93,7 @@ const Projects = () => {
             ))}
             {tags?.length > (isListView ? (window.innerWidth < 640 ? 4 : 6) : 6) && (
               <span className="text-xs text-gray-400 px-2 py-1">
-               +{tags.length - (isListView ? (window.innerWidth < 640 ? 4 : 6) : 6)} more
+                +{tags.length - (isListView ? (window.innerWidth < 640 ? 4 : 6) : 6)} more
               </span>
             )}
           </div>
@@ -153,16 +153,18 @@ const Projects = () => {
       description,
       link,
       tags,
+      priority,
       mainImage {
         asset->{
       _id,
       url
-    }
+    },
       }
       }`)
       .then((data) => {
-        setProjectData(data);
-        setFilteredProjects(data);
+        const sortedData = [...data].sort((a, b) => a.priority - b.priority);
+        setProjectData(sortedData);
+        setFilteredProjects(sortedData);
         const allTags = new Set(data.flatMap(project => project.tags));
         setTags(Array.from(allTags).sort());
         setIsLoading(false);
