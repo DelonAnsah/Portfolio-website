@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
   Decal,
@@ -38,6 +38,15 @@ const Ball = (props) => {
 };
 
 const BallCanvas = ({ icon }) => {
+    const [contextLost, setContextLost] = useState(false);
+
+     if (contextLost) {
+    return (
+      <div className="w-36 h-36 flex items-center justify-center">
+        <img src={icon} alt="tech-icon" className="w-16 h-16" />
+      </div>
+    );
+  }
   return (
     <Canvas
       frameloop='demand'
