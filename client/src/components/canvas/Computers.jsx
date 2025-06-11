@@ -83,7 +83,8 @@ useEffect(() => {
          powerPreference: "high-performance",
         preserveDrawingBuffer: true,
         antialias: false,
-        stencil: false
+        stencil: false,
+         depth: false
        }}
     >
       <Suspense fallback={<CanvasLoader />}>
