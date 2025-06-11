@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
   Decal,
@@ -12,6 +12,7 @@ import CanvasLoader from '../CanvasLoader';
 
 const Ball = (props) => {
   const [decal] = useTexture([props.imgUrl]);
+
 
   return (
     <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
@@ -37,32 +38,80 @@ const Ball = (props) => {
   );
 };
 
-const BallCanvas = ({ icon }) => {
-    const [contextLost, setContextLost] = useState(false);
+class ErrorBoundary extends React.Component {
+  state = { hasError: false, contextLost: false };
 
-     if (contextLost) {
-    return (
-      <div className="w-36 h-36 flex items-center justify-center">
-        <img src={icon} alt="tech-icon" className="w-16 h-16" />
-      </div>
-    );
+  static getDerivedStateFromError(error) {
+    return {
+      hasError: true,
+      contextLost: error.message.includes('CONTEXT_LOST')
+    };
   }
-  return (
-    <Canvas
-      frameloop='demand'
-      dpr={[1, 2]}
-      gl={{ preserveDrawingBuffer: true,
-        onContextLost: () => setContextLost(true),
-        onContextRestore: () => setContextLost(false)
-       }}
-    >
-      <Suspense fallback={<CanvasLoader />}>
-        <OrbitControls enableZoom={false} />
-        <Ball imgUrl={icon} />
-      </Suspense>
 
-      <Preload all />
-    </Canvas>
+  componentDidCatch(error, info) {
+    console.error('WebGL Error:', error);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{
+          background: '#050816',
+          height: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          color: 'white',
+          borderRadius: '50%' // Added to match ball shape
+        }}>
+          {this.state.contextLost ? (
+            <div style={{ textAlign: 'center' }}>
+              <p>Graphics context lost.</p>
+              <button
+                onClick={() => window.location.reload()}
+                style={{
+                  marginTop: '10px',
+                  padding: '5px 10px',
+                  background: '#fff',
+                  color: '#050816',
+                  border: 'none',
+                  borderRadius: '5px',
+                  cursor: 'pointer'
+                }}
+              >
+                Refresh
+              </button>
+            </div>
+          ) : (
+            <p>3D rendering failed.</p>
+          )}
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
+
+const BallCanvas = ({ icon }) => {
+
+
+  return (
+    <ErrorBoundary>
+      <Canvas
+        frameloop='demand'
+        dpr={[1, 2]}
+        gl={{ preserveDrawingBuffer: true }}
+      >
+        <Suspense fallback={<CanvasLoader />}>
+          <OrbitControls enableZoom={false} />
+          <Ball imgUrl={icon} />
+        </Suspense>
+
+        <Preload all />
+      </Canvas>
+    </ErrorBoundary>
+
   );
 };
 
