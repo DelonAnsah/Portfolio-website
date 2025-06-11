@@ -73,19 +73,54 @@ useEffect(() => {
 }, []);
 
 
+ class ErrorBoundary extends React.Component {
+  state = { hasError: false, contextLost: false };
+  
+  static getDerivedStateFromError(error) {
+    return { 
+      hasError: true,
+      contextLost: error.message.includes('CONTEXT_LOST')
+    };
+  }
+  
+  componentDidCatch(error, info) {
+    console.error('WebGL Error:', error);
+  }
+
+ render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{
+          background: '#050816', 
+          height: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          color: 'white'
+        }}>
+          {this.state.contextLost ? (
+            <div>
+              <p>Graphics context lost. Please refresh the page.</p>
+              <button onClick={() => window.location.reload()}>Refresh</button>
+            </div>
+          ) : (
+            <p>3D rendering failed. Your device might not support WebGL.</p>
+          )}
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
   return (
-    <Canvas
+    <ErrorBoundary>
+       <Canvas
       frameloop="demand"
       shadows
       dpr={[1, 2]}
       camera={{ position: [20, 3, 5], fov: 25 }}
-      gl={{ 
-         powerPreference: "high-performance",
-        preserveDrawingBuffer: true,
-        antialias: false,
-        stencil: false,
-         depth: false
-       }}
+      gl={{ preserveDrawingBuffer: true }}
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
@@ -125,6 +160,8 @@ useEffect(() => {
 
       <Preload all />
     </Canvas>
+    </ErrorBoundary>
+   
   );
 };
 
