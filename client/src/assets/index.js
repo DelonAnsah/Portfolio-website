@@ -32,6 +32,10 @@ import rock from './rock.png'
 import snake from './snake.png'
 import typing from './typing.png'
 import memory from './memory.png'
+import Yenara_Consult from "./Yenara-Consult.png"
+import Yenara_Foundation from "./Yenara-Foundation.png"
+
+
 
 export {
   rock,
@@ -64,5 +68,7 @@ export {
   imageFinder,
   Apple,
   GPT3,
-  bank
+  bank,
+  Yenara_Consult,
+  Yenara_Foundation
 };

@@ -17,7 +17,9 @@ import {
   snake,
   memory,
   rock,
-  typing
+  typing,
+  Yenara_Consult,
+  Yenara_Foundation
 } from "../../assets";
 
 export const navLinks = [
@@ -96,7 +98,7 @@ const projects = [
         name: "tailwind",
       },
     ],
-    image: Yenara-Consult,
+    image: Yenara_Consult,
     source_code_link: "https://yenara.vercel.app/",
   },
   {
@@ -117,7 +119,7 @@ const projects = [
         name: "tailwind",
       },
     ],
-    image: Yenara-Foundation,
+    image: Yenara_Foundation,
     source_code_link: "https://www.yenarafoundation.com/",
   },
   {
