@@ -79,25 +79,46 @@ const technologies = [
 
 const projects = [
   {
-    name: "Music App",
+    name: "Yenara Consult",
     description:
-      "Web-based platform that combines music discovery with lyrics exploration, allowing users to easily search tracks, albums, and artists while uncovering the stories behind the lyrics.",
+      " Responsive corporate website for Yenara Consult, a strategy and business analysis consultancy focused on helping organisations achieve sustainable growth through data-driven insights, strategic planning, and digital innovation.",
     tags: [
       {
-        name: "react",
+        name: "Next.js",
       },
       {
-        name: "express.js",
+        name: "formsapi",
       },
       {
-        name: "spotifyapi",
+        name: "framer motion",
       },
       {
         name: "tailwind",
       },
     ],
-    image: MusicHouse,
-    source_code_link: "https://musichouse-jade.vercel.app/",
+    image: Yenara-Consult,
+    source_code_link: "https://yenara.vercel.app/",
+  },
+  {
+    name: "Yenara Foundation",
+    description:
+      "Responsive website for Yenara Foundation, a nonprofit organisation dedicated to empowering young African graduates and early-career professionals through mentorship, industry-relevant training, and career development.",
+    tags: [
+      {
+        name: "Next.js",
+      },
+      {
+        name: "formsapi",
+      },
+      {
+        name: "framer motion",
+      },
+      {
+        name: "tailwind",
+      },
+    ],
+    image: Yenara-Foundation,
+    source_code_link: "https://www.yenarafoundation.com/",
   },
   {
     name: "Bank",
